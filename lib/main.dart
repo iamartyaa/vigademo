@@ -11,11 +11,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Viga Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.blue,
+        accentColor: Colors.amber,
+        backgroundColor: const Color(0xFFE5E5E5),
+        fontFamily: 'Poppins',
+        
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(fontFamily: 'Poppins', fontSize: 29, fontWeight: FontWeight.w600,color: Colors.black)
+        ),
       ),
-      home: ProfileScreen(),
+      home: const ProfileScreen(),
     );
   }
 }
-
