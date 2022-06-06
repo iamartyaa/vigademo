@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool myValue1 = false;
+  bool myValue2 = false;
+  final List<String> myList = [
+    "06:30 pm | 2nd Aug 2021",
+    "06:30 pm | 2nd Aug 2021",
+    "06:30 pm | 2nd Aug 2021",
+    "06:30 pm | 2nd Aug 2021"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,77 +28,172 @@ class ProfileScreen extends StatelessWidget {
           size: 20,
         ),
         title: Text(
-          'Profile',
+          'Settings',
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.settings,
-              color: Theme.of(context).primaryColor,
-              size: 20,
-            ),
-          ),
-        ],
       ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Container(
           height: 683,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 165,
-                    width: double.infinity,
+              Padding(
+                padding: const EdgeInsets.only(top: 16,left: 16),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(15),
+                  ),
+                  child: Container(
+                    width: 303,
+                    height: 125,
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Dark Mode',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                color: Color.fromRGBO(21, 21, 21, 1),
+                              ),
+                            ),
+                            Switch.adaptive(
+                              activeColor: Colors.blue,
+                              value: myValue1,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  myValue1 = newValue;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        Divider(height: 5,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Notification',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                color: Color.fromRGBO(21, 21, 21, 1),
+                              ),
+                            ),
+                            Switch.adaptive(
+                              activeColor: Colors.blue,
+                              value: myValue2,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  myValue2 = newValue;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        Divider(height: 5,),
+                        const Text(
+                          'Change Password',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            color: Color.fromRGBO(0, 106, 255, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(16, 16, 0, 0),
+                child: const Text(
+                  'Transactions',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    color: Color.fromRGBO(21, 21, 21, 1),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(17, 0, 0, 0),
+                child: const Text(
+                  '2021-22 Session',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                    color: Color.fromRGBO(21, 21, 21, 0.5),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(14, 16, 14, 16),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: RaisedButton(
+                    elevation: 5,
+                    focusElevation: 40,
+                    onPressed: () {},
                     color: Theme.of(context).primaryColor,
-                  ),
-                  Positioned(
-                    left: 36,
-                    top: 16,
                     child: Container(
-                      height: 133,
-                      width: 133,
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(15),
-                        ),
-                        child: Image.network(
-                          'https://media-exp1.licdn.com/dms/image/C4D03AQElf0uPrqkoxA/profile-displayphoto-shrink_100_100/0/1652299462640?e=1660176000&v=beta&t=5J1xLdpOynCT4akMbByRVeGjvQVGgt5JMLcKMtlpN0w',
-                          fit: BoxFit.cover,
+                      height: 49,
+                      width: 302,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.wallet_membership,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Pay Fees',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.normal,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                  const Positioned(
-                      left: 177,
-                      top: 38,
-                      child: Text(
-                        'Student\'s \nName',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          fontStyle: FontStyle.normal,
-                          color: Colors.white,
-                        ),
-                      )),
-                  const Positioned(
-                    left: 177,
-                    top: 106,
-                    child: Text(
-                      'name@email.com',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.white,
-                      ),
-                    ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(16, 16, 0, 0),
+                child: const Text(
+                  'Transaction History',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    color: Color.fromRGBO(21, 21, 21, 1),
                   ),
-                ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -95,21 +203,16 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: Container(
                     width: 303,
-                    height: 98,
+                    height: 114,
                     color: Colors.white,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                              top: 10, left: 10, right: 16),
-                          child: const CircleAvatar(radius: 39.5),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              'Attendence Percentage',
-                              style: TextStyle(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 21,
+                          child: ListTile(
+                            title: Text(
+                              myList[index],
+                              style: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -117,187 +220,20 @@ class ProfileScreen extends StatelessWidget {
                                 color: Color.fromRGBO(21, 21, 21, 1),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                  child: Container(
-                    width: 303,
-                    height: 223,
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 20, 0, 0),
-                          child: Text(
-                            'Class',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 0.5),
+                            trailing: const Text(
+                              "Rs 20,000",
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.normal,
+                                color: Colors.blue,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
-                          child: Text(
-                            'Class',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 1),
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 0),
-                          child: Text(
-                            'Parent\'s Name',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 0.5),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 0),
-                          child: Text(
-                            'Father\'s Name',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 1),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
-                          child: Text(
-                            'Mother\'s Name',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 1),
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 0),
-                          child: Text(
-                            'Teacher\'s Name',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 0.5),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 0),
-                          child: Text(
-                            'Teacher Name',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(21, 21, 21, 1),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                  child: Container(
-                    width: 303,
-                    height: 100,
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 20, 0, 0),
-                          child: Text(
-                            'Privacy Policy',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(36, 114, 229, 1),
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 0),
-                          child: Text(
-                            'Terms and Conditions',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(36, 114, 229, 1),
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          height: 5,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(16, 8, 0, 0),
-                          child: Text(
-                            'Log Out',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: Color.fromRGBO(225, 78, 78, 1),
-                            ),
-                          ),
-                        ),
-                      ],
+                        );
+                      },
+                      itemCount: myList.length,
                     ),
                   ),
                 ),

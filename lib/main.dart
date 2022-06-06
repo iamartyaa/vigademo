@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vigademo/widgets/profile.dart';
+import 'package:vigademo/widgets/settings.dart';
 
 void main() {
   runApp(const MyApp());
